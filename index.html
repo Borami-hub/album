@@ -324,21 +324,31 @@ const CONFIG = { owner:"", repo:"", branch:"", root:"photos" };
 
   // ---------- image prep ----------
   function readB64(blob){ return new Promise((res,rej)=>{ const r=new FileReader(); r.onload=()=>res(String(r.result).split(",")[1]); r.onerror=rej; r.readAsDataURL(blob); }); }
+  // 大于 1.2MB 的图片压缩成约 1.2MB 的 JPG（尽量保留清晰度：先调画质，不够再缩尺寸）
+  const TARGET = 1.2*1024*1024;
   async function maybeCompress(file){
-    if(!S.compress || !/^image\/(jpeg|png|webp|bmp)$/.test(file.type)) return {blob:file, ext:null};
-    try{
-      const bmp=await createImageBitmap(file);
-      const MAX=2400, scale=Math.min(1, MAX/Math.max(bmp.width,bmp.height));
-      if(scale===1 && file.size<1.5*1024*1024) return {blob:file, ext:null};
-      const w=Math.round(bmp.width*scale), h=Math.round(bmp.height*scale);
+    if(!S.compress || file.size<=TARGET || /gif|svg/i.test(file.type)) return {blob:file, ext:null};
+    let bmp;
+    try{ bmp=await createImageBitmap(file); }catch(e){ return {blob:file, ext:null}; }
+    const encode=(w,h,q)=>{
       const c=document.createElement("canvas"); c.width=w; c.height=h;
-      const ctx=c.getContext("2d"), keepPng=file.type==="image/png";
-      if(!keepPng){ ctx.fillStyle="#fff"; ctx.fillRect(0,0,w,h); }
+      const ctx=c.getContext("2d"); ctx.fillStyle="#fff"; ctx.fillRect(0,0,w,h);
       ctx.drawImage(bmp,0,0,w,h);
-      const out=await new Promise(r=>c.toBlob(r, keepPng?"image/png":"image/jpeg", 0.85));
-      if(!out || out.size>=file.size) return {blob:file, ext:null};
-      return {blob:out, ext:keepPng?"png":"jpg"};
-    }catch(e){ return {blob:file, ext:null}; }
+      return new Promise(r=>c.toBlob(r,"image/jpeg",q));
+    };
+    let scale=Math.min(1, 4000/Math.max(bmp.width,bmp.height)), best=null;
+    for(let round=0; round<8 && !best; round++){
+      const w=Math.max(1,Math.round(bmp.width*scale)), h=Math.max(1,Math.round(bmp.height*scale));
+      let lo=0.5, hi=0.95;
+      const atLo=await encode(w,h,lo);
+      if(atLo && atLo.size<=TARGET){
+        best=atLo;
+        for(let i=0;i<6;i++){ const q=(lo+hi)/2, b=await encode(w,h,q); if(b && b.size<=TARGET){ best=b; lo=q; } else hi=q; }
+      } else scale*=0.8;
+    }
+    bmp.close && bmp.close();
+    if(!best) return {blob:file, ext:null};
+    return {blob:best, ext:"jpg"};
   }
   function fileName(orig, ext, i){
     const d=new Date(), pad=n=>String(n).padStart(2,"0");
@@ -469,7 +479,7 @@ const CONFIG = { owner:"", repo:"", branch:"", root:"photos" };
       <label>仓库名</label><input type="text" id="sRepo" autocomplete="off" autocapitalize="off">
       <label>分支（留空 = 默认分支）</label><input type="text" id="sBranch" autocomplete="off" autocapitalize="off">
       <label>GitHub Token（只在需要上传/修改的设备上填写）</label><input type="password" id="sToken" autocomplete="off" placeholder="github_pat_…">
-      <label class="chk"><input type="checkbox" id="sCompress"> 上传前自动压缩大图（最长边 2400 像素）</label>
+      <label class="chk"><input type="checkbox" id="sCompress"> 上传前把超过 1.2MB 的图片压缩到约 1.2MB</label>
       <p>Token 只保存在这台设备的浏览器里，不会上传到仓库。不要在别人的设备上填写。</p>
       <div class="row"><button class="btn danger" id="sClear">清除 Token</button><button class="btn" id="dlgNo">取消</button><button class="btn primary" id="dlgOk">保存</button></div>`, d=>{
       d.querySelector("#sOwner").value=S.owner||""; d.querySelector("#sRepo").value=S.repo||"";
