@@ -18,23 +18,25 @@
   input{font:inherit;color:inherit}
   a{color:var(--accent)}
   .wrap{max-width:1100px;margin:0 auto;padding:18px 16px 90px}
-  header{display:flex;align-items:center;gap:8px;margin-bottom:14px;min-height:40px}
+  header{display:flex;align-items:center;gap:8px;margin-bottom:6px;min-height:40px}
   h1{font-size:22px;margin:0;font-weight:650;letter-spacing:.5px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .sub{color:var(--muted);font-size:13px}
+  h2{font-size:15px;margin:22px 0 10px;color:var(--muted);font-weight:600}
+  .crumb{color:var(--muted);font-size:13px;margin:0 0 12px 44px;min-height:18px}
+  .crumb button{border:none;background:none;padding:0;color:var(--accent)}
   .btn{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:8px 14px;white-space:nowrap}
   .btn:hover{border-color:var(--muted)}
   .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
   .btn.danger{color:var(--danger)}
-  .btn:disabled{opacity:.5;cursor:default}
   .iconbtn{border:none;background:none;padding:6px 8px;border-radius:8px;font-size:18px;line-height:1}
   .iconbtn:hover{background:var(--line)}
-  .toolbar{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+  .toolbar{display:flex;gap:10px;margin:8px 0 16px;flex-wrap:wrap}
   .search{flex:1;min-width:180px;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:9px 12px;outline:none}
   .search:focus{border-color:var(--accent)}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
   .album{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;text-align:left;padding:0;display:flex;flex-direction:column;transition:transform .12s, box-shadow .12s}
   .album:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.08)}
-  .cover{aspect-ratio:1/1;background:var(--accent-soft);display:grid;place-items:center;overflow:hidden}
+  .album.add{border-style:dashed;align-items:center;justify-content:center;color:var(--accent);min-height:120px;font-weight:600;background:transparent}
+  .cover{aspect-ratio:1/1;background:var(--accent-soft);display:grid;place-items:center;overflow:hidden;width:100%}
   .cover img{width:100%;height:100%;object-fit:cover;display:block}
   .cover .ph{font-size:34px;color:var(--accent);font-weight:700;opacity:.8}
   .meta{padding:9px 11px 11px}
@@ -45,10 +47,10 @@
   .ph-item img{width:100%;height:100%;object-fit:cover;display:block}
   .ph-item.sel::after{content:"✓";position:absolute;inset:0;background:rgba(194,87,26,.45);color:#fff;font-size:34px;display:grid;place-items:center;font-weight:700}
   .ph-item.uploading{display:grid;place-items:center;color:var(--muted);font-size:12px}
-  .drop{border:2px dashed var(--line);border-radius:var(--radius);padding:22px;text-align:center;color:var(--muted);margin-bottom:14px;transition:.15s}
+  .drop{border:2px dashed var(--line);border-radius:var(--radius);padding:20px;text-align:center;color:var(--muted);margin-bottom:14px;transition:.15s}
   .drop.over{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
   .drop b{color:var(--accent);cursor:pointer}
-  .empty{text-align:center;color:var(--muted);padding:50px 10px}
+  .empty{text-align:center;color:var(--muted);padding:40px 10px}
   .banner{background:var(--accent-soft);border-radius:10px;padding:10px 14px;margin-bottom:14px;font-size:14px}
   .hidden{display:none!important}
   .mask{position:fixed;inset:0;background:rgba(0,0,0,.45);display:grid;place-items:center;z-index:20;padding:16px}
@@ -60,35 +62,31 @@
   .dialog input:focus{border-color:var(--accent)}
   .dialog .chk{display:flex;gap:8px;align-items:center;margin-bottom:14px;font-size:14px;color:var(--ink)}
   .dialog .row{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
-  .list{max-height:300px;overflow:auto;margin-bottom:14px;border:1px solid var(--line);border-radius:10px}
+  .list{max-height:320px;overflow:auto;margin-bottom:14px;border:1px solid var(--line);border-radius:10px}
   .list button{display:block;width:100%;text-align:left;border:none;background:none;padding:10px 12px;border-bottom:1px solid var(--line)}
+  .list button.lv2{padding-left:30px}
   .list button:last-child{border-bottom:none}
   .list button:hover{background:var(--accent-soft)}
   .lb{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:30;display:flex;flex-direction:column}
   .lb-top{display:flex;align-items:center;gap:6px;padding:10px 12px;color:#fff;flex-wrap:wrap}
   .lb-top .t{flex:1;font-size:14px;opacity:.85;min-width:60px}
-  .lb-top button,.lb-top a{background:rgba(255,255,255,.12);border:none;color:#fff;border-radius:8px;padding:7px 12px;font-size:14px;text-decoration:none}
+  .lb-top button{background:rgba(255,255,255,.12);border:none;color:#fff;border-radius:8px;padding:7px 12px;font-size:14px}
   .lb-main{flex:1;display:grid;place-items:center;position:relative;min-height:0;padding:0 8px 16px}
   .lb-main img{max-width:100%;max-height:100%;object-fit:contain}
-  .lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.14);border:none;color:#fff;width:44px;height:44px;border-radius:50%;font-size:22px}
+  .lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.14);border:none;color:#fff;width:44px;height:44px;border-radius:50%;font-size:22px;z-index:2}
   .lb-prev{left:10px}.lb-next{right:10px}
+  .lb-shield{position:absolute;inset:0}
   .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:10px;font-size:14px;z-index:40;opacity:0;transition:opacity .2s;pointer-events:none;max-width:90vw;text-align:center}
   .toast.on{opacity:1}
   .selbar{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;gap:8px;align-items:center;z-index:10;flex-wrap:wrap}
   .selbar .t{flex:1;font-size:14px}
+  .busy{position:fixed;inset:0;background:rgba(0,0,0,.25);z-index:50;display:grid;place-items:center}
+  .busy div{background:var(--card);padding:14px 20px;border-radius:12px}
+  .copybox{width:100%;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:10px 12px;margin-bottom:14px;font-size:13px;word-break:break-all;user-select:all;-webkit-user-select:all}
   /* 只读：禁止拖拽、长按保存、选中图片 */
   img{-webkit-user-drag:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;pointer-events:none}
   .lb-main,.ph-item,.cover{-webkit-touch-callout:none;user-select:none;-webkit-user-select:none}
-  .lb-shield{position:absolute;inset:0}
-  .lb-nav{z-index:2}
   body.shared .owner-only{display:none!important}
-  .share-only{display:none}
-  body.shared .share-only{display:block}
-  body.shared #backBtn{display:none}
-  .share-tip{color:var(--muted);font-size:13px;margin:-8px 0 12px}
-  .copybox{width:100%;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:10px 12px;margin-bottom:14px;font-size:13px;word-break:break-all;user-select:all;-webkit-user-select:all}
-  .busy{position:fixed;inset:0;background:rgba(0,0,0,.25);z-index:50;display:grid;place-items:center}
-  .busy div{background:var(--card);padding:14px 20px;border-radius:12px}
 </style>
 </head>
 <body>
@@ -96,12 +94,12 @@
   <section id="home">
     <header>
       <h1>商品相册</h1>
-      <button class="btn primary edit-only" id="newBtn">＋ 新建商品</button>
+      <button class="btn primary edit-only" id="newBtn">＋ 新建分类</button>
       <button class="iconbtn" id="settingsBtn" aria-label="设置" title="设置">⚙</button>
     </header>
     <div id="banner" class="banner hidden"></div>
     <div class="toolbar">
-      <input class="search" id="search" placeholder="搜索商品名称…" autocomplete="off">
+      <input class="search" id="search" placeholder="搜索分类名称…" autocomplete="off">
       <button class="btn" id="refreshBtn">刷新</button>
     </div>
     <div class="grid" id="albumGrid"></div>
@@ -116,19 +114,24 @@
       <button class="btn edit-only" id="selectBtn">选择</button>
       <button class="iconbtn edit-only" id="moreBtn" aria-label="更多">⋯</button>
     </header>
-    <div class="sub" id="dCount" style="margin:-8px 0 12px 44px"></div>
+    <div class="crumb" id="crumb"></div>
+    <div id="subSection">
+      <h2 id="subTitle">子分类</h2>
+      <div class="grid" id="subGrid"></div>
+    </div>
+    <h2 id="photoTitle">图片</h2>
     <div class="drop edit-only" id="drop">
       把图片拖到这里，或 <b id="pickBtn">选择图片</b>（可多选，也可直接粘贴）
       <input type="file" id="fileInput" accept="image/*" multiple hidden>
     </div>
     <div class="photos" id="photoGrid"></div>
-    <div class="empty hidden" id="detailEmpty">这个商品还没有图片。</div>
+    <div class="empty hidden" id="detailEmpty">这里还没有图片。</div>
   </section>
 </div>
 
 <div class="selbar hidden" id="selbar">
   <span class="t" id="selText">已选 0 张</span>
-  <button class="btn" id="moveSel">移到其他商品</button>
+  <button class="btn" id="moveSel">移到其他分类</button>
   <button class="btn danger" id="delSel">删除</button>
   <button class="btn" id="cancelSel">取消</button>
 </div>
@@ -154,23 +157,20 @@
 
 <script>
 /* =========================================================
-   商品相册 · GitHub 版
-   - 图片存放在仓库的 photos/<商品名>/ 文件夹里
+   商品相册 · GitHub 版（两层分类）
+   - 图片存放在 photos/<分类>/ 或 photos/<分类>/<子分类>/
    - 部署在 GitHub Pages 时会自动识别仓库；否则在「设置」里填写
    - 只看不需要登录；上传 / 移动 / 删除需要在「设置」里填 GitHub Token
+   - 分享链接 ?p=分类 或 ?p=分类/子分类：只读，只能看到这一部分
    ========================================================= */
-const CONFIG = {
-  owner: "",      // 可选：GitHub 用户名，留空则自动识别
-  repo: "",       // 可选：仓库名，留空则自动识别
-  branch: "",     // 可选：分支，留空用默认分支
-  root: "photos", // 图片根目录
-};
+const CONFIG = { owner:"", repo:"", branch:"", root:"photos" };
 
 (() => {
   const $ = id => document.getElementById(id);
   const API = "https://api.github.com";
   const IMG_RE = /\.(jpe?g|png|gif|webp|bmp|avif|heic|svg)$/i;
   const LS = "gh-album-settings";
+  const ROOT = CONFIG.root.replace(/^\/|\/$/g,"");
 
   // ---------- settings ----------
   function loadSettings(){
@@ -187,11 +187,16 @@ const CONFIG = {
   }
   function saveSettings(s){ try{ localStorage.setItem(LS, JSON.stringify(s)); }catch(e){} }
   let S = loadSettings();
-  const ROOT = CONFIG.root.replace(/^\/|\/$/g,"");
+
+  // 分享模式
+  const SHARED = (new URLSearchParams(location.search).get("p") || "").replace(/^\/+|\/+$/g,"") || null;
+  if(SHARED){ document.body.classList.add("shared"); document.title = SHARED.split("/").pop() + " · 商品相册"; }
+  const inScope = p => !SHARED || p===SHARED || p.startsWith(SHARED+"/");
 
   const state = {
-    branch: "", products: new Map(), // name -> {name, photos:[{path,sha,name}], keep:sha|null}
-    current: null, selecting:false, selected:new Set(), lbIndex:-1,
+    branch:"", files:[],   // 所有 photos/ 下的文件 {path, sha}
+    nodes:new Map(),       // "A" 或 "A/B" -> {path,name,parent,depth,photos:[],keep:bool}
+    current:null, selecting:false, selected:new Set(), lbIndex:-1,
     loaded:false, canWrite:false, pending:0, localUrls:new Map(),
   };
 
@@ -201,16 +206,34 @@ const CONFIG = {
   const onPages = () => location.hostname.endsWith(".github.io");
   function imgUrl(path){
     if(state.localUrls.has(path)) return state.localUrls.get(path);
-    if(onPages()) return encPath(path);                         // 同站加载，最稳定
+    if(onPages()) return encPath(path);
     return `https://raw.githubusercontent.com/${S.owner}/${S.repo}/${encodeURIComponent(state.branch)}/${encPath(path)}`;
   }
-  // 分享模式：?p=商品名 只显示这一个商品，只读
-  const SHARED = new URLSearchParams(location.search).get("p");
-  if(SHARED){ document.body.classList.add("shared"); document.title = SHARED + " · 商品相册"; }
-  function shareLink(name){ return location.origin + location.pathname + "?p=" + encodeURIComponent(name); }
+  let toastT;
+  function toast(m){ const t=$("toast"); t.textContent=m; t.classList.add("on"); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove("on"),2600); }
+  function banner(html){ const b=$("banner"); if(!html){b.classList.add("hidden");return;} b.innerHTML=html; b.classList.remove("hidden"); }
+  function busy(on, text){ $("busy").classList.toggle("hidden",!on); if(text) $("busyText").textContent=text; }
+  const byName = (a,b) => a.name.localeCompare(b.name,"zh",{numeric:true});
+  const validName = n => n && !/[\/\\]/.test(n) && n!=="." && n!==".." && !n.startsWith(".");
+  const node = p => state.nodes.get(p);
+  const childrenOf = p => [...state.nodes.values()].filter(n=>n.parent===p).sort(byName);
+  const photosOf = p => (node(p)?.photos||[]).slice().sort((a,b)=>b.name.localeCompare(a.name,"zh",{numeric:true}));
+  const label = p => p.split("/").join(" / ");
+  function countAll(p){ let n=photosOf(p).length; for(const c of childrenOf(p)) n+=countAll(c.path); return n; }
+  function coverOf(p){
+    const own=photosOf(p); if(own.length) return own[own.length-1];
+    for(const c of childrenOf(p)){ const cv=coverOf(c.path); if(cv) return cv; }
+    return null;
+  }
+
+  // ---------- 只读保护 / 分享 ----------
+  document.addEventListener("contextmenu", e=>{ if(!e.target.closest("input,.copybox")) e.preventDefault(); });
+  document.addEventListener("dragstart", e=>{ if(e.target.tagName==="IMG") e.preventDefault(); });
+  document.addEventListener("keydown", e=>{ if((e.ctrlKey||e.metaKey) && /^[sp]$/i.test(e.key)) e.preventDefault(); });
+  const shareLink = p => location.origin + location.pathname + "?p=" + encodeURIComponent(p);
   function share(){
-    const link = shareLink(state.current);
-    openDialog(`<h3>分享「${esc(state.current)}」</h3><p>对方打开后只能看到这个商品的图片，不能下载，也看不到其他商品。</p><div class="copybox" id="shareLink">${esc(link)}</div><div class="row"><button class="btn" id="dlgNo">关闭</button><button class="btn primary" id="dlgOk">复制链接</button></div>`, d=>{
+    const p=state.current, link=shareLink(p), sub=childrenOf(p).length;
+    openDialog(`<h3>分享「${esc(label(p))}」</h3><p>对方打开后只能看到${sub?"这个分类及其子分类":"这个分类"}的图片，不能下载，也看不到其他分类。</p><div class="copybox" id="shareLink">${esc(link)}</div><div class="row"><button class="btn" id="dlgNo">关闭</button><button class="btn primary" id="dlgOk">复制链接</button></div>`, d=>{
       d.querySelector("#dlgNo").onclick=closeDialog;
       d.querySelector("#dlgOk").onclick=async()=>{
         try{ await navigator.clipboard.writeText(link); closeDialog(); toast("链接已复制"); }
@@ -218,17 +241,6 @@ const CONFIG = {
       };
     });
   }
-  // 禁用右键 / 长按菜单、拖拽、保存快捷键（输入框除外）
-  document.addEventListener("contextmenu", e=>{ if(!e.target.closest("input,.copybox")) e.preventDefault(); });
-  document.addEventListener("dragstart", e=>{ if(e.target.tagName==="IMG") e.preventDefault(); });
-  document.addEventListener("keydown", e=>{ if((e.ctrlKey||e.metaKey) && /^[sp]$/i.test(e.key)) e.preventDefault(); });
-  let toastT;
-  function toast(m){ const t=$("toast"); t.textContent=m; t.classList.add("on"); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove("on"),2600); }
-  function banner(html){ const b=$("banner"); if(!html){b.classList.add("hidden");return;} b.innerHTML=html; b.classList.remove("hidden"); }
-  function busy(on, text){ $("busy").classList.toggle("hidden",!on); if(text) $("busyText").textContent=text; }
-  const sortByName = (a,b) => a.name.localeCompare(b.name,"zh",{numeric:true});
-  const photosOf = name => (state.products.get(name)?.photos||[]).slice().sort((a,b)=>b.name.localeCompare(a.name,"zh",{numeric:true}));
-  const validName = n => n && !/[\/\\]/.test(n) && n!=="." && n!==".." && !n.startsWith(".");
 
   // ---------- GitHub API ----------
   async function gh(method, url, body){
@@ -237,9 +249,9 @@ const CONFIG = {
     if(body) headers["Content-Type"] = "application/json";
     const r = await fetch(API + url, { method, headers, body: body ? JSON.stringify(body) : undefined, cache:"no-store" });
     if(!r.ok){
-      let msg = ""; try{ msg = (await r.json()).message || ""; }catch(e){}
-      const err = new Error(msg || ("HTTP " + r.status)); err.status = r.status;
-      if(r.status===403 && r.headers.get("x-ratelimit-remaining")==="0") err.rate = true;
+      let msg=""; try{ msg=(await r.json()).message||""; }catch(e){}
+      const err=new Error(msg||("HTTP "+r.status)); err.status=r.status;
+      if(r.status===403 && r.headers.get("x-ratelimit-remaining")==="0") err.rate=true;
       throw err;
     }
     return r.status===204 ? null : r.json();
@@ -250,17 +262,13 @@ const CONFIG = {
     if(e.status===401) return "Token 无效或已过期，请在「设置」里重新填写。";
     if(e.status===404) return "找不到这个仓库。请确认用户名、仓库名正确，并且仓库是公开的（或 Token 有权限）。";
     if(e.status===409 && /empty/i.test(e.message)) return "仓库还是空的，请先在 GitHub 上给仓库添加一个 README 文件。";
-    if(e.status===403 || e.status===422 && /permission|not accessible/i.test(e.message)) return "Token 没有写入这个仓库的权限（需要 Contents: Read and write）。";
+    if(e.status===403 || (e.status===422 && /permission|not accessible/i.test(e.message))) return "Token 没有写入这个仓库的权限（需要 Contents: Read and write）。";
     if(e instanceof TypeError) return "网络连接失败，请检查网络后重试。";
     return "出错了：" + e.message;
   }
 
   async function loadAll(){
-    if(!S.owner || !S.repo){
-      state.loaded = true;
-      banner(`还没设置仓库。点右上角 <b>⚙ 设置</b> 填写 GitHub 用户名和仓库名。`);
-      render(); return;
-    }
+    if(!S.owner || !S.repo){ state.loaded=true; banner(`还没设置仓库。点右上角 <b>⚙ 设置</b> 填写 GitHub 用户名和仓库名。`); render(); return; }
     try{
       const info = await gh("GET", repoUrl(""));
       state.branch = S.branch || info.default_branch;
@@ -270,183 +278,163 @@ const CONFIG = {
       await loadTree(commit.tree.sha);
       if(S.token && !state.canWrite && !SHARED) banner("这个 Token 对该仓库只有读取权限，所以不能上传或修改。");
       else banner(null);
-    }catch(e){
-      console.error(e); banner(esc(explain(e)));
-    }
-    state.loaded = true; render();
+    }catch(e){ console.error(e); banner(esc(explain(e))); }
+    state.loaded=true; render();
   }
   async function loadTree(treeSha){
     const t = await gh("GET", repoUrl(`/git/trees/${treeSha}?recursive=1`));
-    const map = new Map();
-    const pre = ROOT + "/";
+    const nodes=new Map(), files=[], pre=ROOT+"/";
+    const ensure = p => {
+      if(nodes.has(p)) return nodes.get(p);
+      const parts=p.split("/"), parent=parts.length>1?parts[0]:null;
+      if(parent) ensure(parent);
+      const n={path:p,name:parts[parts.length-1],parent,depth:parts.length,photos:[],keep:false};
+      nodes.set(p,n); return n;
+    };
     for(const it of t.tree){
       if(!it.path.startsWith(pre)) continue;
-      const parts = it.path.slice(pre.length).split("/");
-      if(it.type==="tree" && parts.length===1){ if(!map.has(parts[0])) map.set(parts[0],{name:parts[0],photos:[],keep:null}); continue; }
-      if(it.type!=="blob" || parts.length!==2) continue;
-      const [folder, file] = parts;
-      if(!map.has(folder)) map.set(folder,{name:folder,photos:[],keep:null});
-      if(file===".keep") map.get(folder).keep = it.sha;
-      else if(IMG_RE.test(file)) map.get(folder).photos.push({path:it.path, sha:it.sha, name:file});
+      const parts=it.path.slice(pre.length).split("/");
+      if(parts.some(x=>!validName(x) && x!==".keep")) continue;
+      if(it.type==="tree"){ if(parts.length<=2) ensure(parts.join("/")); continue; }
+      if(it.type!=="blob" || parts.length<2 || parts.length>3) continue;
+      files.push({path:it.path, sha:it.sha});
+      const file=parts.pop(), n=ensure(parts.join("/"));
+      if(file===".keep") n.keep=true;
+      else if(IMG_RE.test(file)) n.photos.push({path:it.path, sha:it.sha, name:file});
     }
-    state.products = map;
+    state.nodes=nodes; state.files=files;
     if(t.truncated) toast("图片太多，部分内容可能没有显示");
   }
 
-  // 把一批文件改动合成一次提交（增 / 删 / 移动）
-  let emptyBlobSha = null;
-  async function getEmptyBlob(){
-    if(!emptyBlobSha) emptyBlobSha = (await gh("POST", repoUrl("/git/blobs"), {content:"", encoding:"utf-8"})).sha;
-    return emptyBlobSha;
-  }
+  // 一次提交里完成多个文件改动
+  let emptyBlobSha=null;
+  async function emptyBlob(){ if(!emptyBlobSha) emptyBlobSha=(await gh("POST", repoUrl("/git/blobs"), {content:"", encoding:"utf-8"})).sha; return emptyBlobSha; }
   async function commit(changes, message){
     for(let attempt=0; attempt<2; attempt++){
       const ref = await gh("GET", repoUrl(`/git/ref/heads/${encodeURIComponent(state.branch)}`));
       const parent = await gh("GET", repoUrl(`/git/commits/${ref.object.sha}`));
       const tree = await gh("POST", repoUrl("/git/trees"), { base_tree: parent.tree.sha, tree: changes.map(c=>({path:c.path, mode:"100644", type:"blob", sha:c.sha})) });
-      const nc = await gh("POST", repoUrl("/git/commits"), { message, tree: tree.sha, parents:[ref.object.sha] });
-      try{
-        await gh("PATCH", repoUrl(`/git/refs/heads/${encodeURIComponent(state.branch)}`), { sha: nc.sha });
-        await loadTree(tree.sha);
-        return;
-      }catch(e){ if(e.status!==422 || attempt===1) throw e; } // 别人刚好也在改：重试一次
+      const nc = await gh("POST", repoUrl("/git/commits"), { message, tree:tree.sha, parents:[ref.object.sha] });
+      try{ await gh("PATCH", repoUrl(`/git/refs/heads/${encodeURIComponent(state.branch)}`), {sha:nc.sha}); await loadTree(tree.sha); return; }
+      catch(e){ if(e.status!==422 || attempt===1) throw e; }
     }
   }
-  // 删除/移走后让文件夹保持存在
-  async function keepFolder(name, changes){
-    const p = state.products.get(name);
-    if(p && !p.keep) changes.push({path:`${ROOT}/${name}/.keep`, sha: await getEmptyBlob()});
-  }
-  async function run(text, fn){
-    busy(true, text);
-    try{ await fn(); } catch(e){ console.error(e); toast(explain(e)); }
-    finally{ busy(false); render(); }
-  }
+  async function keepFolder(p, changes){ const n=node(p); if(n && !n.keep) changes.push({path:`${ROOT}/${p}/.keep`, sha: await emptyBlob()}); }
+  async function run(text, fn){ busy(true,text); try{ await fn(); return true; }catch(e){ console.error(e); toast(explain(e)); return false; } finally{ busy(false); render(); } }
 
   // ---------- image prep ----------
-  function readB64(blob){
-    return new Promise((res,rej)=>{ const r=new FileReader(); r.onload=()=>res(String(r.result).split(",")[1]); r.onerror=rej; r.readAsDataURL(blob); });
-  }
+  function readB64(blob){ return new Promise((res,rej)=>{ const r=new FileReader(); r.onload=()=>res(String(r.result).split(",")[1]); r.onerror=rej; r.readAsDataURL(blob); }); }
   async function maybeCompress(file){
     if(!S.compress || !/^image\/(jpeg|png|webp|bmp)$/.test(file.type)) return {blob:file, ext:null};
     try{
-      const bmp = await createImageBitmap(file);
-      const MAX = 2400, scale = Math.min(1, MAX/Math.max(bmp.width,bmp.height));
-      if(scale===1 && file.size < 1.5*1024*1024) return {blob:file, ext:null};
+      const bmp=await createImageBitmap(file);
+      const MAX=2400, scale=Math.min(1, MAX/Math.max(bmp.width,bmp.height));
+      if(scale===1 && file.size<1.5*1024*1024) return {blob:file, ext:null};
       const w=Math.round(bmp.width*scale), h=Math.round(bmp.height*scale);
       const c=document.createElement("canvas"); c.width=w; c.height=h;
-      const ctx=c.getContext("2d");
-      const keepPng = file.type==="image/png";
+      const ctx=c.getContext("2d"), keepPng=file.type==="image/png";
       if(!keepPng){ ctx.fillStyle="#fff"; ctx.fillRect(0,0,w,h); }
       ctx.drawImage(bmp,0,0,w,h);
-      const out = await new Promise(r=>c.toBlob(r, keepPng?"image/png":"image/jpeg", 0.85));
-      if(!out || out.size >= file.size) return {blob:file, ext:null};
-      return {blob:out, ext: keepPng?"png":"jpg"};
+      const out=await new Promise(r=>c.toBlob(r, keepPng?"image/png":"image/jpeg", 0.85));
+      if(!out || out.size>=file.size) return {blob:file, ext:null};
+      return {blob:out, ext:keepPng?"png":"jpg"};
     }catch(e){ return {blob:file, ext:null}; }
   }
   function fileName(orig, ext, i){
     const d=new Date(), pad=n=>String(n).padStart(2,"0");
     const stamp=`${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}-${pad(d.getHours())}${pad(d.getMinutes())}${pad(d.getSeconds())}`;
-    let base=(orig||"image").replace(/\.[^.]+$/,"").replace(/[\\/:*?"<>|#%\s]+/g,"_").slice(0,40) || "image";
-    let e = ext || ((orig||"").match(/\.([a-z0-9]+)$/i)?.[1]||"jpg").toLowerCase();
+    const base=(orig||"image").replace(/\.[^.]+$/,"").replace(/[\\/:*?"<>|#%\s]+/g,"_").replace(/^\.+/,"").slice(0,40) || "image";
+    const e=ext || ((orig||"").match(/\.([a-z0-9]+)$/i)?.[1]||"jpg").toLowerCase();
     return `${stamp}-${String(i).padStart(2,"0")}-${base}.${e}`;
   }
 
   // ---------- actions ----------
-  function guard(){
-    if(!state.canWrite){ toast(S.token ? "这个 Token 没有写入权限" : "请先在「设置」里填写 GitHub Token"); return false; }
-    return true;
-  }
-  async function createProduct(){
+  function guard(){ if(!state.canWrite){ toast(S.token?"这个 Token 没有写入权限":"请先在「设置」里填写 GitHub Token"); return false; } return true; }
+  async function createNode(parent){
     if(!guard()) return null;
-    const name = await askText("新建商品", "", "创建"); if(!name) return null;
+    const title = parent ? `在「${parent}」下新建子分类` : "新建分类";
+    const name = await askText(title, "", "创建", parent ? "子分类名称" : "分类名称"); if(!name) return null;
     if(!validName(name)){ toast("名称不能包含 / 或 \\，也不能以 . 开头"); return null; }
-    if(state.products.has(name)){ toast("已有同名商品，已为你打开"); return name; }
-    let ok=false;
-    await run("正在创建…", async()=>{ await commit([{path:`${ROOT}/${name}/.keep`, sha: await getEmptyBlob()}], `新建商品：${name}`); ok=true; });
-    return ok ? name : null;
+    const p = parent ? parent+"/"+name : name;
+    if(node(p)){ toast("已有同名分类，已为你打开"); return p; }
+    const ok = await run("正在创建…", async()=>{ await commit([{path:`${ROOT}/${p}/.keep`, sha:await emptyBlob()}], `新建分类：${label(p)}`); });
+    return ok ? p : null;
   }
   async function uploadFiles(files){
     if(!guard()) return;
-    const name = state.current; if(!name) return;
+    const p=state.current; if(!p) return;
     const imgs=[...files].filter(f=>f.type.startsWith("image/") || IMG_RE.test(f.name));
     if(!imgs.length){ toast("只能上传图片"); return; }
-    state.pending = imgs.length; renderDetail();
+    state.pending=imgs.length; renderDetail();
     const changes=[], tooBig=[];
     try{
       for(let i=0;i<imgs.length;i++){
-        const {blob, ext} = await maybeCompress(imgs[i]);
-        if(blob.size > 50*1024*1024){ tooBig.push(imgs[i].name); state.pending--; renderDetail(); continue; }
-        const path=`${ROOT}/${name}/${fileName(imgs[i].name, ext, i+1)}`;
-        const b = await gh("POST", repoUrl("/git/blobs"), {content: await readB64(blob), encoding:"base64"});
+        const {blob,ext}=await maybeCompress(imgs[i]);
+        if(blob.size>50*1024*1024){ tooBig.push(imgs[i].name); state.pending--; renderDetail(); continue; }
+        const path=`${ROOT}/${p}/${fileName(imgs[i].name, ext, i+1)}`;
+        const b=await gh("POST", repoUrl("/git/blobs"), {content:await readB64(blob), encoding:"base64"});
         changes.push({path, sha:b.sha});
-        state.localUrls.set(path, URL.createObjectURL(blob)); // Pages 部署需要约 1 分钟，先用本地预览
+        state.localUrls.set(path, URL.createObjectURL(blob));
         state.pending--; renderDetail();
       }
-      if(changes.length){ busy(true,"正在保存…"); await commit(changes, `上传 ${changes.length} 张图片到：${name}`); }
+      if(changes.length){ busy(true,"正在保存…"); await commit(changes, `上传 ${changes.length} 张图片到：${label(p)}`); }
       toast(tooBig.length ? `已上传 ${changes.length} 张，${tooBig.length} 张超过 50MB 未上传` : `已上传 ${changes.length} 张`);
     }catch(e){ console.error(e); toast(explain(e)); }
     finally{ state.pending=0; busy(false); render(); }
   }
   async function deletePhotos(paths){
-    const name=state.current;
-    await run("正在删除…", async()=>{
-      const ch=paths.map(p=>({path:p, sha:null})); await keepFolder(name, ch);
-      await commit(ch, `删除 ${paths.length} 张图片：${name}`);
-      toast(`已删除 ${paths.length} 张`);
-    });
+    const p=state.current;
+    await run("正在删除…", async()=>{ const ch=paths.map(x=>({path:x, sha:null})); await keepFolder(p, ch); await commit(ch, `删除 ${paths.length} 张图片：${label(p)}`); toast(`已删除 ${paths.length} 张`); });
   }
   async function movePhotos(paths, target){
-    const name=state.current;
-    const tp=state.products.get(target);
-    const taken=new Set((tp?.photos||[]).map(p=>p.name));
+    const p=state.current, taken=new Set(photosOf(target).map(x=>x.name));
     await run("正在移动…", async()=>{
       const ch=[];
-      for(const p of paths){
-        const ph=state.products.get(name).photos.find(x=>x.path===p); if(!ph) continue;
+      for(const x of paths){
+        const ph=node(p).photos.find(y=>y.path===x); if(!ph) continue;
         let fn=ph.name; while(taken.has(fn)) fn=fn.replace(/(\.[^.]+)$/,"-1$1"); taken.add(fn);
         ch.push({path:`${ROOT}/${target}/${fn}`, sha:ph.sha}, {path:ph.path, sha:null});
       }
-      await keepFolder(name, ch);
-      await commit(ch, `移动 ${paths.length} 张图片：${name} → ${target}`);
-      toast(`已移动 ${paths.length} 张到「${target}」`);
+      await keepFolder(p, ch);
+      await commit(ch, `移动 ${paths.length} 张图片：${label(p)} → ${label(target)}`);
+      toast(`已移动 ${paths.length} 张到「${label(target)}」`);
     });
   }
-  async function renameProduct(){
-    if(!guard()) return; const old=state.current;
-    const name=await askText("重命名", old, "保存"); if(!name || name===old) return;
+  async function renameNode(){
+    if(!guard()) return; const n=node(state.current); if(!n) return;
+    const name=await askText("重命名", n.name, "保存", "名称"); if(!name || name===n.name) return;
     if(!validName(name)){ toast("名称不能包含 / 或 \\，也不能以 . 开头"); return; }
-    if(state.products.has(name)){ toast("已有同名商品"); return; }
-    let ok=false;
-    await run("正在重命名…", async()=>{
-      const p=state.products.get(old), ch=[];
-      for(const ph of p.photos) ch.push({path:`${ROOT}/${name}/${ph.name}`, sha:ph.sha}, {path:ph.path, sha:null});
-      ch.push({path:`${ROOT}/${name}/.keep`, sha: p.keep || await getEmptyBlob()});
-      if(p.keep) ch.push({path:`${ROOT}/${old}/.keep`, sha:null});
-      await commit(ch, `重命名商品：${old} → ${name}`); ok=true;
+    const np = n.parent ? n.parent+"/"+name : name;
+    if(node(np)){ toast("已有同名分类"); return; }
+    const oldPre=`${ROOT}/${n.path}/`, newPre=`${ROOT}/${np}/`;
+    const ok = await run("正在重命名…", async()=>{
+      const ch=[];
+      for(const f of state.files.filter(f=>f.path.startsWith(oldPre))) ch.push({path:newPre+f.path.slice(oldPre.length), sha:f.sha}, {path:f.path, sha:null});
+      if(!n.keep) ch.push({path:newPre+".keep", sha:await emptyBlob()});
+      await commit(ch, `重命名分类：${label(n.path)} → ${label(np)}`);
     });
-    if(ok) go(name);
+    if(ok) go(np);
   }
-  async function deleteProduct(){
-    if(!guard()) return; const name=state.current, p=state.products.get(name);
-    if(!await askConfirm("删除商品", `「${name}」和里面的 ${p.photos.length} 张图片都会从仓库中删除（Git 历史里仍可找回）。`)) return;
-    let ok=false;
-    await run("正在删除…", async()=>{
-      const ch=p.photos.map(ph=>({path:ph.path, sha:null}));
-      if(p.keep) ch.push({path:`${ROOT}/${name}/.keep`, sha:null});
-      if(ch.length) await commit(ch, `删除商品：${name}`); else state.products.delete(name);
-      ok=true; toast("已删除");
+  async function deleteNode(){
+    if(!guard()) return; const n=node(state.current); if(!n) return;
+    const subs=childrenOf(n.path).length, cnt=countAll(n.path);
+    if(!await askConfirm("删除分类", `「${label(n.path)}」${subs?`、它的 ${subs} 个子分类`:""}和里面的 ${cnt} 张图片都会从仓库中删除（Git 历史里仍可找回）。`)) return;
+    const pre=`${ROOT}/${n.path}/`;
+    const ok = await run("正在删除…", async()=>{
+      const ch=state.files.filter(f=>f.path.startsWith(pre)).map(f=>({path:f.path, sha:null}));
+      if(ch.length) await commit(ch, `删除分类：${label(n.path)}`); else state.nodes.delete(n.path);
+      toast("已删除");
     });
-    if(ok) go(null);
+    if(ok) go(n.parent);
   }
 
   // ---------- dialogs ----------
   function openDialog(html, onMount){ $("dialog").innerHTML=html; $("mask").classList.remove("hidden"); onMount&&onMount($("dialog")); }
   function closeDialog(){ $("mask").classList.add("hidden"); $("dialog").innerHTML=""; }
   $("mask").addEventListener("click", e=>{ if(e.target.id==="mask") closeDialog(); });
-  function askText(title, value, okText){
+  function askText(title, value, okText, ph){
     return new Promise(res=>{
-      openDialog(`<h3>${esc(title)}</h3><input type="text" id="dlgIn" maxlength="60" placeholder="商品名称"><div class="row"><button class="btn" id="dlgNo">取消</button><button class="btn primary" id="dlgOk">${esc(okText)}</button></div>`, d=>{
+      openDialog(`<h3>${esc(title)}</h3><input type="text" id="dlgIn" maxlength="60" placeholder="${esc(ph||"")}"><div class="row"><button class="btn" id="dlgNo">取消</button><button class="btn primary" id="dlgOk">${esc(okText)}</button></div>`, d=>{
         const inp=d.querySelector("#dlgIn"); inp.value=value||""; setTimeout(()=>inp.focus(),30);
         const ok=()=>{ const v=inp.value.trim(); if(!v){inp.focus();return;} closeDialog(); res(v); };
         d.querySelector("#dlgOk").onclick=ok;
@@ -463,13 +451,15 @@ const CONFIG = {
       });
     });
   }
-  function pickProduct(exclude){
+  function pickTarget(exclude){
     return new Promise(res=>{
-      const others=[...state.products.values()].filter(p=>p.name!==exclude).sort(sortByName);
-      openDialog(`<h3>移到哪个商品？</h3>${others.length?`<div class="list">${others.map(p=>`<button data-n="${esc(p.name)}">${esc(p.name)}</button>`).join("")}</div>`:`<p>还没有其他商品。</p>`}<div class="row"><button class="btn" id="dlgNew">＋ 新建商品</button><button class="btn" id="dlgNo">取消</button></div>`, d=>{
-        d.querySelectorAll(".list button").forEach(b=>b.onclick=()=>{closeDialog();res(b.dataset.n);});
+      const items=[];
+      for(const top of childrenOf(null)){ items.push(top); for(const c of childrenOf(top.path)) items.push(c); }
+      const list=items.filter(n=>n.path!==exclude);
+      openDialog(`<h3>移到哪个分类？</h3>${list.length?`<div class="list">${list.map(n=>`<button class="${n.depth===2?"lv2":""}" data-p="${esc(n.path)}">${n.depth===2?"└ ":""}${esc(n.name)}</button>`).join("")}</div>`:`<p>还没有其他分类。</p>`}<div class="row"><button class="btn" id="dlgNew">＋ 新建分类</button><button class="btn" id="dlgNo">取消</button></div>`, d=>{
+        d.querySelectorAll(".list button").forEach(b=>b.onclick=()=>{closeDialog();res(b.dataset.p);});
         d.querySelector("#dlgNo").onclick=()=>{closeDialog();res(null);};
-        d.querySelector("#dlgNew").onclick=async()=>{ closeDialog(); res(await createProduct()); };
+        d.querySelector("#dlgNew").onclick=async()=>{ closeDialog(); res(await createNode(null)); };
       });
     });
   }
@@ -496,18 +486,19 @@ const CONFIG = {
     });
   }
   function moreMenu(){
-    openDialog(`<h3>${esc(state.current)}</h3><div class="list"><button id="mRename">重命名</button><button id="mDelete" style="color:var(--danger)">删除这个商品（含所有图片）</button></div><div class="row"><button class="btn" id="dlgNo">关闭</button></div>`, d=>{
+    const n=node(state.current);
+    openDialog(`<h3>${esc(label(n.path))}</h3><div class="list"><button id="mRename">重命名</button><button id="mDelete" style="color:var(--danger)">删除这个分类（含${n.depth===1?"子分类和":""}所有图片）</button></div><div class="row"><button class="btn" id="dlgNo">关闭</button></div>`, d=>{
       d.querySelector("#dlgNo").onclick=closeDialog;
-      d.querySelector("#mRename").onclick=()=>{closeDialog();renameProduct();};
-      d.querySelector("#mDelete").onclick=()=>{closeDialog();deleteProduct();};
+      d.querySelector("#mRename").onclick=()=>{closeDialog();renameNode();};
+      d.querySelector("#mDelete").onclick=()=>{closeDialog();deleteNode();};
     });
   }
 
   // ---------- events ----------
   $("settingsBtn").onclick=openSettings;
   $("refreshBtn").onclick=()=>{ state.loaded=false; render(); loadAll(); };
-  $("newBtn").onclick=async()=>{ const n=await createProduct(); if(n) go(n); };
-  $("backBtn").onclick=()=>go(null);
+  $("newBtn").onclick=async()=>{ const p=await createNode(null); if(p) go(p); };
+  $("backBtn").onclick=()=>{ const n=node(state.current); go(n?n.parent:null); };
   $("shareBtn").onclick=share;
   $("moreBtn").onclick=()=>{ if(guard()) moreMenu(); };
   $("search").oninput=renderHome;
@@ -525,24 +516,19 @@ const CONFIG = {
   function exitSelect(){ state.selecting=false; state.selected.clear(); $("selectBtn").textContent="选择"; }
   $("selectBtn").onclick=()=>{ if(state.selecting) exitSelect(); else { if(!guard()) return; state.selecting=true; $("selectBtn").textContent="完成"; } renderDetail(); };
   $("cancelSel").onclick=()=>{ exitSelect(); renderDetail(); };
-  $("delSel").onclick=async()=>{
-    const ps=[...state.selected]; if(!ps.length) return;
-    if(!await askConfirm("删除图片",`确定删除选中的 ${ps.length} 张图片？`)) return;
-    exitSelect(); await deletePhotos(ps);
-  };
-  $("moveSel").onclick=async()=>{
-    const ps=[...state.selected]; if(!ps.length) return;
-    const t=await pickProduct(state.current); if(!t) return;
-    exitSelect(); await movePhotos(ps,t);
-  };
+  $("delSel").onclick=async()=>{ const ps=[...state.selected]; if(!ps.length) return; if(!await askConfirm("删除图片",`确定删除选中的 ${ps.length} 张图片？`)) return; exitSelect(); await deletePhotos(ps); };
+  $("moveSel").onclick=async()=>{ const ps=[...state.selected]; if(!ps.length) return; const t=await pickTarget(state.current); if(!t) return; exitSelect(); await movePhotos(ps,t); };
 
-  function go(name){
-    if(SHARED) return;
-    state.current=name; exitSelect(); closeLb();
-    try{ history.replaceState(null,"", name ? "#"+encodeURIComponent(name) : location.pathname + location.search); }catch(e){}
+  function go(p){
+    if(SHARED && !(p && inScope(p))) p = SHARED;
+    state.current=p||null; exitSelect(); closeLb();
+    try{
+      const q = SHARED ? "?p="+encodeURIComponent(SHARED) : "";
+      history.replaceState(null,"", location.pathname + q + (p && p!==SHARED ? "#"+encodeURIComponent(p) : ""));
+    }catch(e){}
     render(); window.scrollTo(0,0);
   }
-  window.addEventListener("hashchange",()=>{ if(SHARED) return; const n=decodeURIComponent(location.hash.slice(1)); if(n!==(state.current||"")){ state.current=n||null; render(); } });
+  window.addEventListener("hashchange",()=>{ const p=decodeURIComponent(location.hash.slice(1))||null; if(p!==state.current) go(p); });
 
   // lightbox
   function openLb(i){ state.lbIndex=i; $("lb").classList.remove("hidden"); renderLb(); }
@@ -553,8 +539,7 @@ const CONFIG = {
     const list=photosOf(state.current);
     if(!list.length){ closeLb(); return; }
     if(state.lbIndex>=list.length) state.lbIndex=list.length-1;
-    const ph=list[state.lbIndex];
-    $("lbImg").src=imgUrl(ph.path);
+    $("lbImg").src=imgUrl(list[state.lbIndex].path);
     $("lbText").textContent=`${state.lbIndex+1} / ${list.length}`;
     $("lbPrev").style.visibility=state.lbIndex>0?"visible":"hidden";
     $("lbNext").style.visibility=state.lbIndex<list.length-1?"visible":"hidden";
@@ -563,7 +548,7 @@ const CONFIG = {
   $("lbPrev").onclick=()=>{ if(state.lbIndex>0){state.lbIndex--;renderLb();} };
   $("lbNext").onclick=()=>{ if(state.lbIndex<photosOf(state.current).length-1){state.lbIndex++;renderLb();} };
   $("lbDel").onclick=async()=>{ const ph=lbCur(); if(!ph||!guard()) return; if(!await askConfirm("删除图片","确定删除这张图片？")) return; await deletePhotos([ph.path]); renderLb(); };
-  $("lbMove").onclick=async()=>{ const ph=lbCur(); if(!ph||!guard()) return; const t=await pickProduct(state.current); if(!t) return; await movePhotos([ph.path],t); renderLb(); };
+  $("lbMove").onclick=async()=>{ const ph=lbCur(); if(!ph||!guard()) return; const t=await pickTarget(state.current); if(!t) return; await movePhotos([ph.path],t); renderLb(); };
   document.addEventListener("keydown",e=>{
     if(state.lbIndex<0 || !$("mask").classList.contains("hidden")) return;
     if(e.key==="Escape") closeLb(); else if(e.key==="ArrowLeft") $("lbPrev").click(); else if(e.key==="ArrowRight") $("lbNext").click();
@@ -573,45 +558,73 @@ const CONFIG = {
   $("lb").addEventListener("touchend",e=>{ if(tx==null) return; const dx=e.changedTouches[0].clientX-tx; tx=null; if(Math.abs(dx)>50)(dx>0?$("lbPrev"):$("lbNext")).click(); });
 
   // ---------- render ----------
+  function card(n){
+    const cv=coverOf(n.path), cnt=countAll(n.path), subs=childrenOf(n.path).length;
+    return `<button class="album" data-p="${esc(n.path)}"><div class="cover">${cv?`<img loading="lazy" src="${esc(imgUrl(cv.path))}" alt="">`:`<span class="ph">${esc([...n.name][0]||"?")}</span>`}</div><div class="meta"><div class="n">${esc(n.name)}</div><div class="c">${subs?`${subs} 个子分类 · `:""}${cnt} 张</div></div></button>`;
+  }
+  function bindCards(el){ el.querySelectorAll(".album[data-p]").forEach(b=>b.onclick=()=>go(b.dataset.p)); }
+
   function render(){
     document.querySelectorAll(".edit-only").forEach(el=>el.classList.toggle("hidden",!state.canWrite));
-    if(SHARED){
-      const ok = state.products.has(SHARED);
-      $("home").classList.toggle("hidden", ok || !state.loaded ? true : false);
-      $("detail").classList.toggle("hidden", !ok);
-      if(ok){ renderDetail(); return; }
-      // 分享模式下不显示首页，只显示提示
-      $("home").classList.remove("hidden");
-      $("albumGrid").innerHTML=""; document.querySelector("#home header").classList.add("hidden");
-      document.querySelector("#home .toolbar").classList.add("hidden");
-      const em=$("homeEmpty"); em.classList.remove("hidden");
-      em.textContent = state.loaded ? "这个相册不存在，可能已被重命名或删除。" : "正在加载…";
-      return;
+    if(SHARED && !state.current) state.current=SHARED;
+    if(state.current && state.loaded && !node(state.current)){
+      if(SHARED){ return renderMissing(); }
+      state.current=null;
     }
-    if(state.current && state.loaded && !state.products.has(state.current)) state.current=null;
-    const inDetail=!!state.current && state.products.has(state.current);
-    $("home").classList.toggle("hidden",inDetail);
-    $("detail").classList.toggle("hidden",!inDetail);
-    if(inDetail) renderDetail(); else { renderHome(); closeLb(); $("selbar").classList.add("hidden"); }
+    const inDetail=!!state.current && !!node(state.current);
+    $("home").classList.toggle("hidden", inDetail || (SHARED && state.loaded));
+    $("detail").classList.toggle("hidden", !inDetail);
+    if(inDetail) renderDetail();
+    else { if(SHARED) renderLoading(); else renderHome(); closeLb(); $("selbar").classList.add("hidden"); }
+  }
+  function renderLoading(){
+    $("home").classList.remove("hidden");
+    document.querySelector("#home header").classList.add("hidden");
+    document.querySelector("#home .toolbar").classList.add("hidden");
+    $("albumGrid").innerHTML="";
+    $("homeEmpty").textContent="正在加载…"; $("homeEmpty").classList.remove("hidden");
+  }
+  function renderMissing(){
+    renderLoading(); $("detail").classList.add("hidden");
+    $("homeEmpty").textContent="这个相册不存在，可能已被重命名或删除。";
   }
   function renderHome(){
     const q=$("search").value.trim().toLowerCase();
-    const list=[...state.products.values()].filter(p=>!q||p.name.toLowerCase().includes(q)).sort(sortByName);
-    $("albumGrid").innerHTML=list.map(p=>{
-      const ph=photosOf(p.name), cov=ph[ph.length-1];
-      return `<button class="album" data-n="${esc(p.name)}"><div class="cover">${cov?`<img loading="lazy" src="${esc(imgUrl(cov.path))}" alt="">`:`<span class="ph">${esc([...p.name][0]||"?")}</span>`}</div><div class="meta"><div class="n">${esc(p.name)}</div><div class="c">${ph.length} 张</div></div></button>`;
-    }).join("");
-    $("albumGrid").querySelectorAll(".album").forEach(b=>b.onclick=()=>go(b.dataset.n));
+    let list;
+    if(!q) list=childrenOf(null);
+    else list=[...state.nodes.values()].filter(n=>n.name.toLowerCase().includes(q)).sort((a,b)=>a.depth-b.depth||byName(a,b));
+    $("albumGrid").innerHTML=list.map(n=> q && n.depth===2 ? card(n).replace(`<div class="n">${esc(n.name)}</div>`, `<div class="n">${esc(n.name)}</div><div class="c">${esc(n.parent)}</div>`) : card(n)).join("");
+    bindCards($("albumGrid"));
     const em=$("homeEmpty"); let msg="";
     if(!state.loaded) msg="正在加载…";
-    else if(!state.products.size) msg = state.canWrite ? "还没有商品。点「新建商品」，用商品名称建一个分类，再往里放图片。" : (S.owner&&S.repo ? "还没有商品。" : "");
-    else if(!list.length) msg="没有找到匹配的商品。";
+    else if(!state.nodes.size) msg = state.canWrite ? "还没有分类。点「新建分类」开始，例如「女装」，进去后还可以建子分类，例如「T恤」。" : (S.owner&&S.repo ? "还没有分类。" : "");
+    else if(!list.length) msg="没有找到匹配的分类。";
     em.textContent=msg; em.classList.toggle("hidden",!msg);
   }
   function renderDetail(){
-    const name=state.current; if(!state.products.has(name)) return;
-    const list=photosOf(name);
-    $("dTitle").textContent=name; $("dCount").textContent=`${list.length} 张图片`;
+    const n=node(state.current); if(!n) return;
+    const list=photosOf(n.path), subs=childrenOf(n.path);
+    $("dTitle").textContent=n.name;
+    // 返回按钮：分享模式下不能超出分享范围
+    $("backBtn").classList.toggle("hidden", !!SHARED && n.path===SHARED);
+    // 面包屑
+    const parts=[];
+    if(!SHARED) parts.push(`<button data-p="">全部</button>`);
+    if(n.parent && inScope(n.parent)) parts.push(`<button data-p="${esc(n.parent)}">${esc(n.parent)}</button>`);
+    $("crumb").innerHTML = parts.length ? parts.join(" › ") + " › " + esc(n.name) : `${countAll(n.path)} 张图片`;
+    $("crumb").querySelectorAll("button").forEach(b=>b.onclick=()=>go(b.dataset.p||null));
+    // 子分类（只有第一层才有）
+    const showSubs = n.depth===1 && (subs.length || state.canWrite);
+    $("subSection").classList.toggle("hidden", !showSubs);
+    if(showSubs){
+      $("subGrid").innerHTML = subs.map(card).join("") + (state.canWrite ? `<button class="album add" id="addSub">＋ 新建子分类</button>` : "");
+      bindCards($("subGrid"));
+      const add=$("addSub"); if(add) add.onclick=async()=>{ const p=await createNode(n.path); if(p) go(p); };
+    }
+    $("subTitle").textContent = `子分类${subs.length?`（${subs.length}）`:""}`;
+    const showPhotos = list.length>0 || state.canWrite || state.pending>0 || !subs.length;
+    $("photoTitle").classList.toggle("hidden", !showSubs || !showPhotos);
+    $("photoTitle").textContent = n.depth===1 ? `直接放在「${n.name}」里的图片（${list.length}）` : `图片（${list.length}）`;
     if(!list.length) $("selectBtn").classList.add("hidden");
     let html=""; for(let i=0;i<state.pending;i++) html+=`<div class="ph-item uploading">上传中…</div>`;
     html+=list.map((ph,i)=>`<button class="ph-item${state.selected.has(ph.path)?" sel":""}" data-i="${i}" data-p="${esc(ph.path)}"><img loading="lazy" src="${esc(imgUrl(ph.path))}" alt=""></button>`).join("");
@@ -620,15 +633,16 @@ const CONFIG = {
       if(state.selecting){ const p=b.dataset.p; state.selected.has(p)?state.selected.delete(p):state.selected.add(p); renderDetail(); }
       else openLb(+b.dataset.i);
     });
-    $("detailEmpty").classList.toggle("hidden", list.length>0 || state.pending>0);
+    $("detailEmpty").classList.toggle("hidden", list.length>0 || state.pending>0 || subs.length>0);
     $("selbar").classList.toggle("hidden",!state.selecting);
     $("selText").textContent=`已选 ${state.selected.size} 张`;
     if(state.lbIndex>=0) renderLb();
   }
 
   // ---------- boot ----------
-  if(SHARED) state.current=SHARED;
-  else if(location.hash.length>1) state.current=decodeURIComponent(location.hash.slice(1));
+  const h=decodeURIComponent(location.hash.slice(1));
+  if(SHARED) state.current = h && inScope(h) ? h : SHARED;
+  else if(h) state.current=h;
   render(); loadAll();
 })();
 </script>
